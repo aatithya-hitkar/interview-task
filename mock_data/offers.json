@@ -1,0 +1,30 @@
+[
+  {
+    "offer_id": "OFFER-001",
+    "name": "10% Off Annual Upgrade",
+    "description": "Upgrade to a One Year contract and get 10% off your monthly bill.",
+    "valid_risk_tiers": ["high", "medium"],
+    "valid_contract_types": ["Month-to-month"]
+  },
+  {
+    "offer_id": "OFFER-002",
+    "name": "Free Premium Support",
+    "description": "Add priority customer support for free for 6 months.",
+    "valid_risk_tiers": ["high"],
+    "valid_contract_types": ["Month-to-month", "One year", "Two year"]
+  },
+  {
+    "offer_id": "OFFER-003",
+    "name": "Loyalty Bill Credit",
+    "description": "$50 one-time bill credit for renewing your contract.",
+    "valid_risk_tiers": ["medium", "low"],
+    "valid_contract_types": ["One year", "Two year"]
+  },
+  {
+    "offer_id": "OFFER-004",
+    "name": "Free Streaming Add-on",
+    "description": "Include a free premium streaming package for 3 months to boost satisfaction.",
+    "valid_risk_tiers": ["high", "medium"],
+    "valid_contract_types": ["Month-to-month", "One year"]
+  }
+]
