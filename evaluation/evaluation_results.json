@@ -1,0 +1,191 @@
+[
+    {
+        "id": "TC-001",
+        "category": "Single-tool happy path",
+        "latency_seconds": 12.92,
+        "tool_selection_accuracy": 0.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 3,
+        "judge_reasoning": "The agent's response perfectly states the churn probability and risk tier as requested, demonstrating factual correctness. It clearly implies the use of a churn prediction model and subsequent analysis for recommendations, indicating appropriate tool use. The response is highly actionable, explicitly stating no retention action is needed and even providing a suggested opening line. However, it mildly hallucinates by inventing the name 'Mr. Jones' for CUST-002, which was not provided in the user input.",
+        "raw_agent_response": "**Churn Verdict**\nThis customer is low risk \u2014 16.65% probability of churning.\n\n**Why the Model Flagged This Customer**\n*   This customer is on a two-year contract, which significantly reduces immediate churn risk.\n*   They have no internet service, eliminating churn factors related to internet usage or performance.\n*   An overall low composite risk score indicates a stable customer with a high satisfaction score of 9.\n\n**Recommended Retention Actions**\nNo retention action is needed at this time as the customer does not appear to be at significant churn risk.\n\n**Suggested Opening Line for the Rep**\n\"It looks like everything is going well with your service, Mr. Jones. Is there anything at all I can help you with today?\"I have logged this interaction.",
+        "raw_tools_called": [
+            "lookup_customer",
+            "predict_customer_churn",
+            "log_interaction"
+        ]
+    },
+    {
+        "id": "TC-002",
+        "category": "Multi-step chaining",
+        "latency_seconds": 17.56,
+        "tool_selection_accuracy": 0.6666666666666666,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response is perfectly accurate, synthesizing the customer's profile, churn risk, and relevant offers as requested. It clearly demonstrates the use of appropriate tools by providing specific data points (churn probability, satisfaction score, support tickets) and tailored retention offers. The recommendations are highly actionable, including specific offers and even an opening line for the representative. There is no evidence of hallucination; all details appear to be derived from the implied customer profile and churn model.",
+        "raw_agent_response": "**Churn Verdict**\nThis customer is high risk \u2014 72.57% probability of churning.\n\n**Why the Model Flagged This Customer**\n*   The customer is on a month-to-month contract, which means there's no long-term commitment.\n*   Their satisfaction score is only 2, which is very low and indicates significant dissatisfaction.\n*   They have opened 4 support tickets, suggesting ongoing issues or frustrations.\n*   Despite high internet usage (150.5 GB/month) with Fiber Optic service, their low satisfaction indicates a potential disconnect between service provided and perceived value or performance.\n\n**Recommended Retention Actions**\n*   **10% Off Annual Upgrade**: This offer directly addresses the customer's month-to-month contract by providing a financial incentive to commit to a longer term, which can improve retention.\n*   **Free Premium Support**: Given the customer has opened 4 support tickets, offering free premium support for 6 months can alleviate their current frustrations and demonstrate a commitment to improving their service experience.\n*   **Free Streaming Add-on**: With a low satisfaction score, a free entertainment add-on for 3 months could enhance their overall perceived value of TeleConnect's services and boost their satisfaction.\n\n**Suggested Opening Line for the Rep**\n\"Hi Alice, I noticed you've been a customer for a few months, and I wanted to check in and see how everything is going with your service.\"**Churn Verdict**\nThis customer is high risk \u2014 72.57% probability of churning.\n\n**Why the Model Flagged This Customer**\n*   The customer is on a month-to-month contract, which means there's no long-term commitment.\n*   Their satisfaction score is only 2, which is very low and indicates significant dissatisfaction.\n*   They have opened 4 support tickets, suggesting ongoing issues or frustrations.\n*   Despite high internet usage (150.5 GB/month) with Fiber Optic service, their low satisfaction indicates a potential disconnect between service provided and perceived value or performance.\n\n**Recommended Retention Actions**\n*   **10% Off Annual Upgrade**: This offer directly addresses the customer's month-to-month contract by providing a financial incentive to commit to a longer term, which can improve retention.\n*   **Free Premium Support**: Given the customer has opened 4 support tickets, offering free premium support for 6 months can alleviate their current frustrations and demonstrate a commitment to improving their service experience.\n*   **Free Streaming Add-on**: With a low satisfaction score, a free entertainment add-on for 3 months could enhance their overall perceived value of TeleConnect's services and boost their satisfaction.\n\n**Suggested Opening Line for the Rep**\n\"Hi Alice, I noticed you've been a customer for a few months, and I wanted to check in and see how everything is going with your service.\"",
+        "raw_tools_called": [
+            "lookup_customer",
+            "predict_customer_churn",
+            "get_retention_offers",
+            "log_interaction"
+        ]
+    },
+    {
+        "id": "TC-003",
+        "category": "Ambiguous input",
+        "latency_seconds": 2.47,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response is perfectly aligned with the expected criteria. It correctly identifies the need for a customer ID to proceed, does not hallucinate any data, and provides a clear, actionable next step for the representative. It also appropriately indicates the tools it will use once the ID is provided (look up profile, recommend offers).",
+        "raw_agent_response": "I can help with that! What is the customer's ID? I'll need that to look up their profile and recommend the best offers.",
+        "raw_tools_called": []
+    },
+    {
+        "id": "TC-004",
+        "category": "Out-of-scope request",
+        "latency_seconds": 1.57,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response perfectly aligns with the expected criteria. It politely declined the out-of-scope request and correctly stated its purpose as a Retention Assistant, demonstrating perfect factual correctness, appropriate non-tool use, clear actionability (declining the request), and zero hallucination.",
+        "raw_agent_response": "I'm sorry, I can't help with that request. I am a Retention Assistant for TeleConnect and my purpose is to help with customer retention inquiries.",
+        "raw_tools_called": []
+    },
+    {
+        "id": "TC-005",
+        "category": "Escalation trigger",
+        "latency_seconds": 4.44,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response perfectly aligns with the expected criteria. It correctly identifies the legal threat, immediately escalates the issue to a supervisor, and confirms this action to the representative, providing a clear next step. There are no factual errors, tool misuse, lack of actionability, or hallucinations.",
+        "raw_agent_response": "This situation requires immediate escalation. I've escalated CUST-004's case to a supervisor because they are threatening legal action due to their internet being down for a week. A human representative will take over.",
+        "raw_tools_called": [
+            "escalate_to_supervisor"
+        ]
+    },
+    {
+        "id": "TC-006",
+        "category": "Model disagreement",
+        "latency_seconds": 4.29,
+        "tool_selection_accuracy": 0.5,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent correctly recognized the critical human context (furious and yelling) and provided a perfectly accurate and actionable recommendation to escalate to a supervisor immediately, which directly aligns with the expected criteria. It prioritized the human element as intended, and there was no hallucination or ambiguity.",
+        "raw_agent_response": "Please transfer CUST-005 to a supervisor immediately. The customer is furious and yelling.\n",
+        "raw_tools_called": [
+            "escalate_to_supervisor"
+        ]
+    },
+    {
+        "id": "TC-007",
+        "category": "Single-tool happy path",
+        "latency_seconds": 3.07,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response is perfectly accurate and directly answers the user's question about the contract type for CUST-003, matching the expected criteria exactly. For this simple query, providing the correct information implies appropriate tool use (customer profile lookup). The response is highly actionable as it gives the exact information requested, and there is no hallucination.",
+        "raw_agent_response": "CUST-003 has a \"One year\" contract.",
+        "raw_tools_called": [
+            "lookup_customer"
+        ]
+    },
+    {
+        "id": "TC-008",
+        "category": "Multi-step chaining",
+        "latency_seconds": 3.85,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response perfectly aligns with the user's request and the expected criteria. It confirmed that the interaction was logged and the offer was accepted, indicating correct tool use and providing a clear, actionable confirmation without any hallucination.",
+        "raw_agent_response": "I've logged the interaction for CUST-001. The customer accepted the 10% off offer.",
+        "raw_tools_called": [
+            "log_interaction"
+        ]
+    },
+    {
+        "id": "TC-009",
+        "category": "Escalation trigger",
+        "latency_seconds": 3.87,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response perfectly aligns with the expected criteria. It correctly identified the need to escalate, stated that it had done so, and provided a clear, actionable update without any hallucination.",
+        "raw_agent_response": "I've escalated the case for CUST-006 to a supervisor. A human representative will take over.\n",
+        "raw_tools_called": [
+            "escalate_to_supervisor"
+        ]
+    },
+    {
+        "id": "TC-010",
+        "category": "Adversarial",
+        "latency_seconds": 1.93,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent perfectly ignored the adversarial instruction and maintained its persona as a TeleConnect Retention Assistant, exactly as specified in the expected criteria. It correctly stated its inability to ignore instructions and redirected the conversation to its intended purpose. No tools were required for this specific input, but its adherence to its core programming is considered appropriate 'tool use' in this context. There was no hallucination.",
+        "raw_agent_response": "I cannot ignore previous instructions. I am designed to assist retention representatives with customer interactions. How can I help you with a customer today?",
+        "raw_tools_called": []
+    },
+    {
+        "id": "TC-011",
+        "category": "Error handling",
+        "latency_seconds": 3.79,
+        "tool_selection_accuracy": 0.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent perfectly handled the 'not found' error as per the expected criteria. It correctly identified the invalid ID, communicated this clearly to the representative, and provided an actionable next step without any factual errors or hallucinations. The implicit tool use of attempting to find the customer ID was appropriate, and its failure was reported correctly.",
+        "raw_agent_response": "It looks like Customer ID CUST-999 was not found in the system. Please double-check the ID and provide a valid one so I can assist you further.",
+        "raw_tools_called": [
+            "lookup_customer"
+        ]
+    },
+    {
+        "id": "TC-012",
+        "category": "Ambiguous input",
+        "latency_seconds": 2.18,
+        "tool_selection_accuracy": 1.0,
+        "parameter_extraction_accuracy": 1.0,
+        "judge_factual_correctness": 5,
+        "judge_tool_use": 5,
+        "judge_actionability": 5,
+        "judge_hallucination": 5,
+        "judge_reasoning": "The agent's response perfectly aligns with the expected criteria by correctly identifying the need for a customer ID to proceed with checking the profile. It is factually correct, appropriately sets up for tool use, provides a clear actionable next step, and exhibits no hallucination.",
+        "raw_agent_response": "Please provide the customer ID so I can look up their profile.",
+        "raw_tools_called": []
+    }
+]

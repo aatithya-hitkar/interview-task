@@ -6,6 +6,25 @@ This repository contains the complete solution for the TeleConnect AI/ML Enginee
 1. **Part 1:** Data cleaning, Exploratory Data Analysis (EDA), and training predictive ML models (Logistic Regression & XGBoost).
 2. **Part 2:** A production-ready AI Retention Agent using Google ADK and an LLM-as-Judge evaluation framework, deployed via a Streamlit web interface.
 
+## 🏗️ Architecture & Design Decisions
+
+### 1. Machine Learning Pipeline (Part 1)
+- **Model Selection:** Both Logistic Regression and XGBoost were trained. **XGBoost** was selected as the primary artifact for the agent due to its superior capability to capture complex, non-linear relationships in tabular data without requiring extensive feature scaling.
+- **Metric Optimization:** We explicitly prioritized **Recall** (Sensitivity) over overall accuracy. In a churn scenario, a False Negative (missing a churner) is a critical revenue loss, whereas a False Positive (offering retention to a safe customer) is merely a low-cost intervention.
+- **Handling Target Leakage:** During EDA, flags like `conflict_satisfaction_churn` were generated to identify contradictory data points. These were strictly stripped out before model training to prevent target leakage, ensuring the model generalizes to new inference data.
+
+### 2. AI Retention Agent (Part 2)
+- **Orchestration Framework:** We selected **Google Agent Development Kit (ADK) 2.0** over LangChain/Autogen. ADK provides a robust, code-first Python framework that natively supports determinist tool execution, strict state management, and seamless integration with Gemini models.
+- **Tool Chaining Logic:** We intentionally modified the `predict_customer_churn` tool to accept a full customer profile dictionary rather than just a customer ID string. This forced a structural dependency: the LLM *cannot* predict churn without first calling `lookup_customer`, guaranteeing the correct execution order and preventing LLM shortcutting.
+- **Session Memory:** The Streamlit application maintains conversational context by instantiating ADK's `InMemorySessionService` and passing a unique UUID per user session. This prevents cross-user contamination while allowing the agent to remember context across multiple turns.
+
+### 3. Evaluation Framework (LLM-as-Judge)
+- **Why LLM-as-Judge?:** Traditional deterministic NLP metrics (like BLEU/ROUGE) are terrible at evaluating semantic conversational quality. An LLM-as-Judge can reason through complex rubrics.
+- **Anchored Scoring:** To prevent "positivity bias" (where LLMs lazily assign 8/10 to everything), we enforced a strict `1, 3, 5` scale with explicit anchors (e.g., defining exactly what constitutes a "Severe Hallucination").
+- **Metrics vs. LLM Evaluation:** We decoupled deterministic tool selection/latency metrics from semantic quality evaluation, allowing for a hybrid scorecard that balances computational performance with conversational intelligence.
+
+---
+
 ## 📂 Project Folder Structure
 
 ```
