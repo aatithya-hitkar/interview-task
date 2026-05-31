@@ -60,6 +60,26 @@ This repository contains the complete solution for the TeleConnect AI/ML Enginee
 └── README.md                   # This file
 ```
 
+## 📋 Deliverables Mapping
+
+| Task No | Task / Subtask | Filepath |
+| :--- | :--- | :--- |
+| **1** | Jupyter notebook with markdown narrative | `notebooks/Part1_Churn_Analysis.ipynb` |
+| **1** | Cleaning code or cleaned dataset | `src/data_processing.py`, `data/cleaned_datafile.csv` |
+| **1** | Data quality summary table (before/after) | `src/data_processing.py` |
+| **1** | Three or more EDA visualizations with written takeaways | `src/model_building.py`, `evaluation/eda_charts.png` |
+| **1** | Two or more models trained, compared, and evaluated | `src/model_building.py` |
+| **1 → 2** | Exported model artifact and predict_churn function | `models/*.pkl`, `src/tools.py` |
+| **2** | Agent orchestration code with tool definitions | `src/agent.py`, `src/tools.py` |
+| **2** | Structured test suite (12+ cases) | `evaluation/test_suite.json` |
+| **2** | Automated evaluation metrics | `evaluation/eval_metrics.py` |
+| **2** | LLM-as-judge pipeline with anchored scoring rubric | `evaluation/llm_judge.py` |
+| **2** | Live demo URL | `src/app.py` (Deployed to Streamlit Cloud) |
+| **2** | Results scorecard with success and failure analysis | `evaluation/scorecard_analysis.md`, `evaluation/evaluation_scorecard.csv` |
+| **Both** | GitHub repository with commit history and README | `README.md` |
+
+---
+
 ## ⚙️ How to Setup
 
 This project uses Python 3.11+. The dependencies are optimized for CPU environments to prevent bulky unnecessary downloads (e.g., CUDA libraries).
