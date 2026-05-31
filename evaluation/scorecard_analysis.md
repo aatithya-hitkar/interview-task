@@ -1,6 +1,6 @@
 # Retention Agent Evaluation Scorecard & Analysis
 
-🚀 **Live Agent Demo:** [https://aatithya-allianz-task.streamlit.app/](https://aatithya-allianz-task.streamlit.app/)
+🚀 **Live Agent Demo:** [https://aatithya-task.streamlit.app/](https://aatithya-task.streamlit.app/)
 
 This document fulfills Part 2.4 of the assessment. It contains the aggregate evaluation of the AI Agent against the 12-case test suite, along with deep-dive analyses of specific successes and failures, and a production CI/CD roadmap.
 

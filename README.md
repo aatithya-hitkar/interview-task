@@ -1,6 +1,6 @@
 # TeleConnect Customer Churn & Retention Agent
 
-🚀 **Live Agent Demo:** [https://aatithya-allianz-task.streamlit.app/](https://aatithya-allianz-task.streamlit.app/)
+🚀 **Live Agent Demo:** [https://aatithya-task.streamlit.app/](https://aatithya-task.streamlit.app/)
 
 This repository contains the complete solution for the TeleConnect AI/ML Engineer Take-Home Assessment. It is divided into two parts:
 1. **Part 1:** Data cleaning, Exploratory Data Analysis (EDA), and training predictive ML models (Logistic Regression & XGBoost).
